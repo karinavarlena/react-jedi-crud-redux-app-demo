@@ -4,15 +4,18 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import { Provider} from 'react-redux'
 import { createStore} from 'redux'
-
+import { loadStore, saveState } from './services/loadStoreServices';
 import rootReducer from './store/reducers'
 
-const store = createStore(rootReducer,
+const persistedState = loadStore();
+const store = createStore(
+    rootReducer,
+    persistedState,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-
-// const x = 3;
-// const element = React.createElement('div', {}, 'text');
+store.subscribe(() => {
+    saveState(store.getState())
+})
 
 ReactDOM.render(
     <Provider store={store}>

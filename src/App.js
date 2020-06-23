@@ -7,6 +7,8 @@ import PeoplePage from "./components/pages/PeoplePage";
 import PlanetsPage from "./components/pages/PlanetsPage";
 import StarshipsPage from "./components/pages/StarshipsPage";
 import PeopleForm from "./components/PeopleForm";
+import PlanetsForm from "./components/PlanetsForm";
+import StarsipsForm from "./components/StarshipsForm";
 import Navbar from "./components/Navbar";
 import NotFound from "./components/common/NotFound";
 import {getPeople} from "./services/peopleService";
@@ -48,12 +50,11 @@ function App() {
             <Navbar/>
             <main className="container">
                 <Switch>
-                    <Route path="/people/:id" render={props =>
-                        <PeopleForm {...props}  />}/>
+                    <Route path="/people/:id" render={props =><PeopleForm {...props}  />}/>
                     <Route path="/people" render={props => <PeoplePage {...props} />} />
-                    {/*<Route path="/planets/:id" component={Form}/>*/}
+                    <Route path="/planets/:id" render={props =><PlanetsForm {...props}  />}/>
                     <Route path="/planets"  render={props => <PlanetsPage {...props} />} />
-                    {/*<Route path="/starships/:id" component={Form}/>*/}
+                    <Route path="/starships/:id" render={props =><StarsipsForm {...props}  />}/>
                     <Route path="/starships" render={props => <StarshipsPage {...props} />}/>
                     <Route path="/not-found" component={NotFound}/>
                     <Redirect exact from="/" to="/people" component={PeoplePage}/>

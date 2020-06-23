@@ -1,4 +1,4 @@
-import {SET_STARSHIPS, DELETE_STARSHIP} from '../actions/starships'
+import {SET_STARSHIPS, SET_STARSHIP, DELETE_STARSHIP} from '../actions/starships'
 
 const initialState = {
   allStarships: []
@@ -14,6 +14,10 @@ function starships(state = initialState, action) {
       return {...state,
         allStarships: state.allStarships.filter(starship => starship.id !== action.id)
       };
+    case SET_STARSHIP:
+      return {...state,
+        allStarships: [...state.allStarships, action.starship]
+    };
     default:
       return state;
   }

@@ -33,6 +33,13 @@ const PlanetsPage = () => {
     return (
         <div>
             <h3 className="my-3">Planets</h3>
+            <Link
+                to={"/planets/new"}
+                className="btn btn-warning"
+                style={{marginBottom: 25}}
+            >
+                New Planet
+            </Link>
             <Table
                 columns={getColumns()}
                 data={Object.values(planets)}
