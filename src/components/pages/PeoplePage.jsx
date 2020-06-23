@@ -8,7 +8,7 @@ import { deletePerson, changeBelovedStatus } from '../../store/actions/people';
 const PeoplePage = () => {
     const dispatch = useDispatch();
     const people = useSelector(state => getAllPeople(state));
-
+    
     const handleBelovedStatus = id => {
         dispatch(changeBelovedStatus(id));
     }
