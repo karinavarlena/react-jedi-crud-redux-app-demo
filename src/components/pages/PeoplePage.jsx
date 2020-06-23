@@ -8,7 +8,7 @@ import { deletePerson, changeBelovedStatus } from '../../store/actions/people';
 const PeoplePage = () => {
     const dispatch = useDispatch();
     const people = useSelector(state => getAllPeople(state));
-    
+
     const handleBelovedStatus = id => {
         dispatch(changeBelovedStatus(id));
     }
@@ -47,7 +47,7 @@ const PeoplePage = () => {
 
     return (
         <div>
-            <h3>People from Star Wars Universe</h3>
+            <h3 className="my-3">People from Star Wars Universe</h3>
             <Link
                 to={"/people/new"}
                 className="btn btn-warning"

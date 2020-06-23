@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Input from "./common/Input";
 import Button from './common/Button';
 import {nanoid} from "nanoid";
-
-
+import { createPerson } from '../store/actions/people';
+import { useDispatch } from 'react-redux';
 import {peopleColumns} from "../services/peopleService";
 
 const initialPersonData = peopleColumns.reduce((columns, columnName) => {
@@ -15,6 +15,7 @@ const PeopleForm = ({setPeople, people, history, match}) => {
     const [formErrors, setFormErrors] = useState({});
     const [personData, setPersonData] = useState({...initialPersonData});
     const [editMode, setEditMode] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const personId = match.params.id;
@@ -45,9 +46,11 @@ const PeopleForm = ({setPeople, people, history, match}) => {
 
         if (editMode) {
             const newPeopleList = people.map(person => person.id === personData.id ? personData : person);
-            setPeople(newPeopleList)
+            //setPeople(newPeopleList)
+            //dispatch(createPerson)
+
         } else {
-            setPeople( people, {...personData, beloved: false, id: nanoid()});
+            //setPeople( people, {...personData, beloved: false, id: nanoid()});
         }
         history.push('/')
     }

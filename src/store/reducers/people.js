@@ -1,4 +1,4 @@
-import {SET_PEOPLE, DELETE_PERSON, CHANGE_BELOVED_STATUS} from '../actions/people'
+import {SET_PEOPLE, DELETE_PERSON, CHANGE_BELOVED_STATUS, SET_PERSON} from '../actions/people'
 
 const initialState = {
   allPeople: []
@@ -20,7 +20,10 @@ function people(state = initialState, action) {
           return person.id === action.id ? {...person, beloved: !person.beloved} : person
       })
       };
-
+    case SET_PERSON:
+      return {...state,
+        allPeople: [...state.allPeople, ...action.person]
+    };
     default:
       return state;
   }

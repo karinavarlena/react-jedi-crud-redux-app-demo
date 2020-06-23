@@ -32,14 +32,7 @@ const StarshipsPage = () => {
 
     return (
         <div>
-            <h3>Starships</h3>
-            <Link
-                to={"/starships/new"}
-                className="btn btn-warning"
-                style={{marginBottom: 25}}
-            >
-                New Starships
-            </Link>
+            <h3 className="my-3">Starships</h3>
             <Table
                 columns={getColumns()}
                 data={Object.values(starships)}
