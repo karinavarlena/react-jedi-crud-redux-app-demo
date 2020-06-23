@@ -11,9 +11,11 @@ import Navbar from "./components/Navbar";
 import NotFound from "./components/common/NotFound";
 import {getPeople} from "./services/peopleService";
 import {getPlanets} from "./services/planetsService";
+import {getStarships} from "./services/spaceshipsService";
 import { useDispatch } from 'react-redux';
 import { setPeople } from './store/actions/people';
 import { setPlanets } from './store/actions/planets';
+import { setStarships } from './store/actions/starships';
 
 
 // for intro/learning purposes
@@ -32,8 +34,10 @@ function App() {
         async function fetchData() {
             const peopleResponse = await getPeople()
             const planetsResponse = await getPlanets()
+            const starshipsResponse = await getStarships()
             dispatch(setPeople(peopleResponse));
             dispatch(setPlanets(planetsResponse));
+            dispatch(setStarships(starshipsResponse));
         }
 
         fetchData()
@@ -50,7 +54,7 @@ function App() {
                     {/*<Route path="/planets/:id" component={Form}/>*/}
                     <Route path="/planets"  render={props => <PlanetsPage {...props} />} />
                     {/*<Route path="/starships/:id" component={Form}/>*/}
-                    <Route path="/starships" component={StarshipsPage}/>
+                    <Route path="/starships" render={props => <StarshipsPage {...props} />}/>
                     <Route path="/not-found" component={NotFound}/>
                     <Redirect exact from="/" to="/people" component={PeoplePage}/>
                     <Redirect to="/not-found"/>
