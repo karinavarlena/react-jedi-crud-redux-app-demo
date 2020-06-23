@@ -22,7 +22,7 @@ function people(state = initialState, action) {
       };
     case SET_PERSON:
       return {...state,
-        allPeople: [...state.allPeople, ...action.person]
+        allPeople: [...state.allPeople, action.person]
     };
     default:
       return state;
